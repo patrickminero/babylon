@@ -1,3 +1,26 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@media only screen and (min-width: 300px){
+    .home-container{
+      min-height: 100vh;
+      background: url(https://res.cloudinary.com/dliczkabg/image/upload/v1610970787/background-home_fgrfeh.jpg), rgba(0, 0, 0, 0.6);
+      background-blend-mode: overlay;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      color: white;
+    }
+    .brand-banner{
+      width: 80%;
+      margin: auto;
+      transform: translateY(40vh);
+    }
+    .brand-banner h1{
+      font-size: 3rem;
+    }
+    .brand-banner h2{
+      font-size: 2.7rem;
+    }
+  
+  }
