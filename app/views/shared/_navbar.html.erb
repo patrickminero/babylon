@@ -12,8 +12,17 @@
         <li class="nav-item text-center">
           <a class="nav-link" href="#">Contact</a>
         </li>
+        <%if  user_signed_in? %>
         <li class="nav-item text-center">
-          <a class="nav-link" href="/users/sign_up">Login | Register</a>
+          <a class="nav-link" href="/profile/<%= current_user.id %>">Profile</a>
+        </li>
+        <% end %>
+        <li class="nav-item text-center">
+          <% if user_signed_in?%>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <% else %>
+            <%= link_to "Login | Register", new_user_registration_path, class: "nav-link" %>
+          <% end %>
         </li>
       </ul>
     </div>

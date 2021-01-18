@@ -1,0 +1,23 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+@media only screen and (min-width: 300px){
+    .profile-container img{
+        width: 200px;
+        display: block;
+        height: 200px;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        margin: auto;
+    }
+    .profile-container{
+        position: relative;
+        padding-top: 50px;
+    }
+    .edit-profile-btn{
+        position: absolute;
+        right: 0;
+        top: 10px;
+    }
+    
+}

@@ -1,4 +1,4 @@
-<% categories = ['Medical', 'Legal', 'Home Repair', 'Translation', 'Accounting', 'Real Estate', 'Mental Health'] %>
+<% categories = ['Medical', 'Legal', 'Home-improvement', 'Translation', 'Accounting', 'Housing', 'Well-being'] %>
 
 <div class="container">
   <div class="row">
@@ -6,7 +6,7 @@
       <div class="">
       <% categories.each do |category| %>
         <a href="/products/<%= category %>" class="text-decoration-none">
-          <div class="col-12 lg-6 category-card" style="background-image: url(https://loremflickr.com/320/240/<%= category %>)">
+          <div class="col-12 lg-6 category-card" style="background-image: url(https://source.unsplash.com/featured/?<%= category %>)">
             <div class="card-content">
               <h4><%= category %></h4>
             </div>

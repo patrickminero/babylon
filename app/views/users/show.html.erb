@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-6 m-auto">
+      <div class="profile-container">
+         <%= link_to edit_user_registration_path(@user), class: 'btn btn-outline-secondary edit-profile-btn' do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+        <img src="<%= @user.photo %>" alt="user photo">
+        <div class="profile-info">
+          <h1><%= @user.username %></h1>
+          <h2><%= @user.email %></h2>
+          <h2><%= @user.location %></h2>
+          <h2><%= @user.preferred_language %></h2>
+          <p><%= @user.description %></p>
+        </div>
+      </div>
+      <% if !@user.provider %>
+            <h3>Speak many languages?</h3>
+            <%= link_to  "Become a provider", user_registration_path, class: "btn btn-secondary" %>
+          <% end %>
+    </div>
+  </div>
+</div>
