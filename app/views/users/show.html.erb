@@ -1,24 +1,24 @@
 <div class="container profile-page">
   <div class="row">
-    <div class="col-12 col-md-10 col-lg-6 m-auto">
+    <div class="col-12 col-md-10 col-lg-6 mx-auto my-4">
       <div class="profile-container">
          <%= link_to edit_user_registration_path(@user), class: 'btn btn-outline-secondary edit-profile-btn' do %>
             <i class="far fa-edit"></i>
           <% end %>
-        <img src="<%= @user.photo %>" alt="user photo">
+        <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
         <div class="profile-info">
           <h1><%= @user.username.capitalize %></h1>
           <div>
-            <h4>Contact me </h4><h6><%= @user.email %></h6>
+            <h6><i class="far fa-envelope"></i> <%= @user.email %></h6>
           </div>
           <div>
-            <h4>Lives in </h4><h6><%= @user.location %></h6>
+            <h6><i class="fas fa-map-pin"></i> <%= @user.location %></h6>
           </div>
           <div>
-            <h4>I prefer to speak in </h4><h6><%= @user.preferred_language %></h6>
+            <h6><i class="fas fa-language"></i> <%= @user.preferred_language %></h6>
           </div>
-          <div>
-            <h3>About me:</h3>
+          <div class="mt-3">
+            <h5 class="mb-0">About me:</h5>
             <h6><%= @user.description %></h6>
           </div>
         </div>
