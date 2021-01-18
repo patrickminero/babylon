@@ -1,0 +1,26 @@
+<% categories = ['Medical', 'Legal', 'Home Repair', 'Translation', 'Accounting', 'Real Estate', 'Mental Health'] %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="">
+      <% categories.each do |category| %>
+        <a href="/products/<%= category %>" class="text-decoration-none">
+          <div class="col-12 lg-6 category-card" style="background-image: url(https://loremflickr.com/320/240/<%= category %>)">
+            <div class="card-content">
+              <h4><%= category %></h4>
+            </div>
+          </div>
+        </a>
+      <% end %>
+      <a href="/products" class="text-decoration-none">
+          <div class="col-12 lg-6 category-card" style="background-image: url(https://loremflickr.com/320/240/meeting)">
+            <div class="card-content">
+              <h4>All</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
