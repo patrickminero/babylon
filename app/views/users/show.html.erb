@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container profile-page">
   <div class="row">
     <div class="col-12 col-md-10 col-lg-6 m-auto">
       <div class="profile-container">
@@ -7,17 +7,29 @@
           <% end %>
         <img src="<%= @user.photo %>" alt="user photo">
         <div class="profile-info">
-          <h1><%= @user.username %></h1>
-          <h2><%= @user.email %></h2>
-          <h2><%= @user.location %></h2>
-          <h2><%= @user.preferred_language %></h2>
-          <p><%= @user.description %></p>
+          <h1><%= @user.username.capitalize %></h1>
+          <div>
+            <h4>Contact me </h4><h6><%= @user.email %></h6>
+          </div>
+          <div>
+            <h4>Lives in </h4><h6><%= @user.location %></h6>
+          </div>
+          <div>
+            <h4>I prefer to speak in </h4><h6><%= @user.preferred_language %></h6>
+          </div>
+          <div>
+            <h3>About me:</h3>
+            <h6><%= @user.description %></h6>
+          </div>
         </div>
       </div>
-      <% if !@user.provider %>
-            <h3>Speak many languages?</h3>
-            <%= link_to  "Become a provider", user_registration_path, class: "btn btn-secondary" %>
-          <% end %>
+      <div class="profile-action">
+        <% if !@user.provider %>
+          <h3>Speak many languages?</h3>
+          <%= link_to  "Become a provider", user_registration_path, class: "btn btn-secondary" %>
+        <% end %>
+      </div>
+      
     </div>
   </div>
 </div>
