@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-10 col-lg-8">
+            <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <% @provider.photos.each_with_index do |photo, index| %>
+                        <div class="carousel-item <%= 'active' if index == 0 %>">
+                            <%= cl_image_tag photo.key, class:'provider-image', crop: :fill, gravity: :face %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+
+            
+                
+            
+            <h1><%= @provider.name %></h1>
+            <h2><%= @provider.description %></h2>
+        </div>
+    </div>
+</div>

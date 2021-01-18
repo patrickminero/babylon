@@ -1,0 +1,39 @@
+<div class="container new-provider-body">
+	<div class="row">
+		<div class="col-12 col-md-10 col-lg-6 m-auto">
+			<div class="new-provider-container">
+				<h1>Become a provider</h1>
+				<%= form_for(@provider) do |f| %>
+					<div class="field">
+						<%= f.file_field :photos, as: :file,  multiple: true  %>
+					</div>
+					<div class="field">
+						<%= f.label :name %>
+						<%= f.text_field :name, class: 'input-background' %>
+					</div>
+					<div class="field">
+						<%= f.label :service_type %>
+						<%= f.text_field :service_type, class: 'input-background' %>
+					</div>
+						<div class="field">
+						<%= f.label :rate %>
+						<%= f.number_field :rate, class: 'input-background' %>
+					</div>	
+					<div class="field">
+						<%= f.label :address %>
+						<%= f.text_field :location, class: 'input-background' %>
+					</div>
+					<div class="field">
+						<%= f.label :languages_spoken %>
+						<%= f.text_field :languages_spoken, class: 'input-background' %>
+					</div>
+					<div class="field">
+						<%= f.label :description %>
+						<%= f.text_field :description, class: 'input-background' %>
+					</div>			
+					<%= f.submit "Register", class: 'btn btn-secondary mt-3' %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

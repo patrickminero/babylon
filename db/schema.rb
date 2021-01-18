@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_18_172235) do
+ActiveRecord::Schema.define(version: 2021_01_18_182503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,19 @@ ActiveRecord::Schema.define(version: 2021_01_18_172235) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "providers", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "rate"
+    t.bigint "user_id", null: false
+    t.string "service_type"
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "languages_spoken", default: [], array: true
+    t.index ["user_id"], name: "index_providers_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -57,4 +70,5 @@ ActiveRecord::Schema.define(version: 2021_01_18_172235) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "providers", "users"
 end
