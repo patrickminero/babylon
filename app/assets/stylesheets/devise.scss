@@ -1,0 +1,10 @@
+@media only screen and (min-width: 300px){
+    .field  input{
+        width: 100% !important;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+    }
+    .form-container{
+        transform: translateY(50%);
+    }
+}
