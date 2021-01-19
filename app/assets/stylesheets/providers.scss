@@ -18,7 +18,6 @@
     }
     .provider-image{
         width: 100%;
-        // height: 250px;
         object-fit: cover;
     }
     .carousel-container{
@@ -40,16 +39,47 @@
         border-radius: 10px;
         content: '';
     }
-    
     .transition{
         opacity: 0;
         display: none;
+    }
+    .collage-container{
+        display: none;
+    }
+    .provider-show-container{
+        background-color: rgba(0, 0, 0, 0.8);
+        min-height: 100vh;
+        padding-bottom: 1em;
+        padding-top: 4em;
+    }
+    .provider-show-info-container{
+        background-color: rgba(255, 255, 255, 0.8);
+        width: 95%;
+        margin: .5em auto;
+        border-radius: 10px;
+        padding: 10px 20px;
+    }
+    .provider-show-info-container img {
+        display: block;
+        border-radius: 50%;
+        margin: auto;
+        object-fit: cover;
     }
 }
 @media only screen and (min-width: 768px){
     .carousel-container{
         display: none;
     }
+    .collage-container{
+        display: block;
+        padding-top: 56px;
+    }
+    .column {
+        flex: 50%;
+        max-width:50%;
+        padding: 4px;
+    }
+    
     .index-provider-card-body{
         padding-top: 40px !important;
     }
@@ -70,4 +100,28 @@
         opacity: 1;
         display: block;
     }
+    .column {
+        flex: 50%;
+        max-width: 50%;
+      }
+}
+@media only screen and (min-width: 1024){
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 4px;
+      }
+      
+      /* Create four equal columns that sits next to each other */
+      .column {
+        flex: 25%;
+        max-width: 25%;
+        padding: 4px;
+      }
+      
+      .column img {
+        margin-top: 8px;
+        vertical-align: middle;
+        width: 100%;
+      }
 }

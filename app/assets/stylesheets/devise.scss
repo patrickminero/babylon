@@ -7,5 +7,15 @@
     .form-container{
         transform: translateY(50%);
     }
+    .edit-user-container{
+        background-color: rgba(0, 0, 0, 0.8);
+        min-height: calc(100vh);
+    }
+    .edit-form-container{
+        transform: translateY(15%);
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
     
 }

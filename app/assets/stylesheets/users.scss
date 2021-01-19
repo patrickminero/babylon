@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @media only screen and (min-width: 300px){
     .profile-page{
+        margin-top: 56px;
         background-color: rgba(0, 0, 0, 0.8);
         min-height: calc(100vh - 56px);
     }

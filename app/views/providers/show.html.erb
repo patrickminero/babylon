@@ -1,19 +1,36 @@
-<div class="carousel-container">
-    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <% @provider.photos.each_with_index do |photo, index| %>
-                <div class="carousel-item <%= 'active' if index == 0 %>">
-                    <%= cl_image_tag photo.key, class:'provider-image', crop: :fill, gravity: :face %>
-                </div>
-            <% end %>
-        </div>
-    </div>
-</div>
-<div class="container">
+<div class="container provider-show-container">
     <div class="row">
-        <div class="col-12 col-md-10 col-lg-8">               
-            <h1><%= @provider.name %></h1>
-            <h2><%= @provider.description %></h2>
+        <div class="col-12 col-md-10 col-lg-8"> 
+            <div class="provider-show-info-container">
+                <%= cl_image_tag @provider.photos[0].key, height: 250, width: 250, crop: :fill %>
+                <div class="profile-info">
+                    <h1><%= @provider.name %></h1>
+                    <div>
+                        <h6><i class="fas fa-graduation-cap"></i> <%= @provider.service_type %></h6>
+                    </div>
+                    <div>
+                        <h6><i class="far fa-envelope"></i> <%= @provider.user.email %></h6>
+                    </div>
+                    <div>
+                        <h6><i class="fas fa-map-pin"></i> <%= @provider.location %></h6>
+                    </div>
+                    <div>
+                        <h6>
+                        <i class="fas fa-language"></i>
+                        <% @provider.languages_spoken.each do |language| %>
+                            <%= language %>
+                        <% end %>
+                        </h6>
+                    </div>
+                    <div>
+                        <h6><i class="fas fa-money-bill"></i> €<%= @provider.rate %>.00</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="provider-show-info-container">
+                <h4>About me</h4>
+                <p><%= @provider.description %></p>
+            </div>
         </div>
     </div>
 </div>
