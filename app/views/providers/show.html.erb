@@ -48,6 +48,11 @@
                 <% end %>
             </div>
             <div class="provider-show-info-container">
+                <h3><%= @provider.name %> reviews</h3>
+                <% if @provider.reviews.nil? || @provider.reviews.length == 0%>
+                    <h4>Be the first to review <%= @provider.name %>.</h4>
+                <% else %>
+                <% end %>
             </div>
         </div>
     </div>
