@@ -23,13 +23,16 @@
           </div>
         </div>
       </div>
-      <div class="profile-action">
-        <% if !@user.provider %>
+      <% if !@user.provider %>
+        <div class="profile-action">
           <h3>Speak many languages?</h3>
           <%= link_to  "Become a provider", new_provider_path, class: "btn btn-secondary" %>
-        <% end %>
-      </div>
-      
+        </div>
+        <% else %>
+        <div class="profile-action">
+          <%= link_to  "View my services", provider_path(Provider.find_by(user_id: @user.id)), class: "btn btn-secondary" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

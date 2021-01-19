@@ -1,0 +1,35 @@
+<div class="container provider-index-container">
+    <div class="toggle-button-container">
+        <button class="toggle-view btn btn-secondary ">Toggle view <i class="fas fa-map"></i></button>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <% @providers.each do |provider| %>
+                <div class="card my-3 m-auto" style="max-width: 768px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <%= cl_image_tag provider.photos[0].key, class:'provider-image', crop: :fill, gravity: :face %>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body shadow-lg index-provider-card-body">
+                                <h5 class="card-title"><%= provider.name.upcase %></h5>
+                                <p class="card-text fw-bolder"><%= provider.service_type %></p>
+                                <div class="d-flex justify-content-start flex-wrap">
+                                    <% provider.languages_spoken.each do |language| %>
+                                        <h5><span class="badge bg-secondary me-3 fw-normal"><%= language %></span></h5>
+                                    <% end %>
+                                </div>
+                                <p class="card-text text-truncate"><%= provider.description %></p>
+                                <p class="card-text"><small class="text-muted">Rate: €<%= provider.rate %>.00</small></p>
+                                <%= link_to 'More info', provider_path(provider.id), class: 'btn btn-secondary' %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <div class="col-12 col-lg-6 my-3" id="map">
+            
+        </div>
+    </div>
+</div>

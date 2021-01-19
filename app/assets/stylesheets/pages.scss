@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @media only screen and (min-width: 300px){
     .home-container{
-      min-height: 100vh;
+      min-height: calc(100vh - 56px);
       background: url(https://res.cloudinary.com/dliczkabg/image/upload/v1610970787/background-home_fgrfeh.jpg), rgba(0, 0, 0, 0.6);
       background-blend-mode: overlay;
       background-position: center;
