@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2021-01-19
+  time: 2021-01-19 22:14:05
+  user: one
+  provider: one
+
+two:
+  date: 2021-01-19
+  time: 2021-01-19 22:14:05
+  user: two
+  provider: two
