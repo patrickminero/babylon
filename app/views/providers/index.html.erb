@@ -1,9 +1,11 @@
-<div class="container provider-index-container">
+<div class="container provider-index-container" data-controller="toggle-map">
     <div class="toggle-button-container">
-        <button class="toggle-view btn btn-secondary ">Toggle view <i class="fas fa-map"></i></button>
+        <button class="toggle-view btn btn-secondary" data-toggle-map-target="toggleButton" data-action="click->toggle-map#toggle" id="toggleButton">
+            Toggle view <i class="fas fa-map-marked-alt ml-2"></i>
+        </button>
     </div>
     <div class="row">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-6"  data-toggle-map-target="listView">
             <% @providers.each do |provider| %>
                 <div class="card my-3 m-auto" style="max-width: 768px;">
                     <div class="row g-0">
@@ -28,7 +30,7 @@
                 </div>
             <% end %>
         </div>
-        <div class="col-12 col-lg-6 my-3" id="map">
+        <div class="col-12 col-lg-6 my-3 transition" id="map" data-toggle-map-target="mapView">
             
         </div>
     </div>

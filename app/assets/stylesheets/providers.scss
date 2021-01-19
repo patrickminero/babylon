@@ -41,6 +41,11 @@
         border-radius: 10px;
         content: '';
     }
+    
+    .transition{
+        opacity: 0;
+        display: none;
+    }
 }
 @media only screen and (min-width: 768px){
     #carousel{
@@ -54,7 +59,16 @@
     }
 }
 @media only screen and (min-width: 993px){
+    #toggleButton{
+        display: none;
+    }
     #map{
         width: 50%;
+        position: sticky;
+        top: 0;
+    }
+    .transition{
+        opacity: 1;
+        display: block;
     }
 }
