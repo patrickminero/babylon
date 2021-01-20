@@ -28,8 +28,14 @@
                 </div>
             </div>
             <div class="provider-show-info-container">
-                <h4>About me</h4>
-                <p><%= @provider.description %></p>
+                <div>
+                    <h4>About me</h4>
+                    <p><%= @provider.description %></p>
+                    <p>Have questions?</p>
+                </div>
+                <div class="actions w-100 m-auto text-center pt-2">
+                    <%= link_to 'Send me a message', providers_path, class: 'btn btn-secondary'  %>
+                </div>
             </div>
             <div class="provider-show-info-container">
                 <h3>Book <%= @provider.name %> Services</h3>
