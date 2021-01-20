@@ -43,15 +43,34 @@
                         <%= f.date_field :date %>
                     </div>
                     <div class="actions w-100 m-auto text-center pt-2">
-                        <%= f.submit 'Book', class: 'btn btn-secondary w-25' %>
+                        <%= f.submit 'Book', class: 'btn btn-secondary' %>
                     </div>
                 <% end %>
             </div>
             <div class="provider-show-info-container">
                 <h3><%= @provider.name %> reviews</h3>
                 <% if @provider.reviews.nil? || @provider.reviews.length == 0%>
-                    <h4>Be the first to review <%= @provider.name %>.</h4>
+                    <p>Be the first to review <%= @provider.name %>.</p>
                 <% else %>
+                    <% @provider.reviews.each do |review| %>
+                        <div class="review-contaner">
+                            <p><%= review.ratin %></p>
+                            <p><%= review.content %></p>
+                        </div>
+                    <% end %>
+                <% end %>
+                <%= form_for([@provider, @review]) do |f| %>
+                    <div class="field">
+                        <%= f.label :rating %>
+                        <%= f.select(:rating, 1..5) %>
+                    </div>
+                    <div class="field">
+                        <%= f.label :content %>
+                        <%= f.text_area :content %>
+                    </div>
+                    <div class="actions w-100 m-auto text-center pt-2">
+                        <%= f.submit 'Add review', class: 'btn btn-secondary' %>
+                    </div>
                 <% end %>
             </div>
         </div>
