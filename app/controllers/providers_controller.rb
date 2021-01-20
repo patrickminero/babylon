@@ -7,6 +7,7 @@ class ProvidersController < ApplicationController
 		@provider = Provider.find(params[:id])
 		@booking = Booking.new
 		@review = Review.new
+		@chatroom  = Chatroom.new
 	end
 
 	def new
