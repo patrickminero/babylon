@@ -1,10 +1,18 @@
 <div class="container-fluid provider-show-container">
     <div class="row">
-        <div class="col-12 col-md-10 col-lg-8  m-auto"> 
+        <div class="col-12 col-md-10 col-lg-6  m-auto"> 
             <div class="provider-show-info-container">
                 <%= cl_image_tag @provider.photos[0].key, height: 250, width: 250, crop: :fill %>
                 <div class="profile-info">
-                    <h1><%= @provider.name %></h1>
+                    <div>
+                        <h1><%= @provider.name %></h1> 
+                        <% if @provider.rating == 0 %>
+                            <p>Not rated yet</p>
+                        <% else %>
+                        <p><% @provider.rating.times do %><i class="fas fa-star text-secondary"></i><% end %> <%= pluralize @provider.reviews.size, "review" %></p>
+                        <% end %>
+                    </div>
+                    
                     <div>
                         <h6><i class="fas fa-graduation-cap"></i> <%= @provider.service_type %></h6>
                     </div>
