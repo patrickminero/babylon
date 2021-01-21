@@ -12,5 +12,4 @@ class Provider < ApplicationRecord
     total = self.reviews.sum(:rating)
     total / self.reviews.count
   end
-  
 end
