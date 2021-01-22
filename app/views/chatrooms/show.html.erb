@@ -2,9 +2,19 @@
   <div class="row">
     <div class="col-12 col-md-10 col-lg-6 m-auto pt-5">
       <div class="chat-info-container pt-1">
-        
+        <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+          <% @chatroom.messages.each do |message| %>
+            <div class="message-container" id="message-<%= message.id %>">
+              <i class="author">
+                <span><%= message.user.username %></span>
+                <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+              </i>
+              <p><%= message.content %></p>
+            </div>
+          <% end %>
+        </div>
         <div class="chat-form">
-          <%= form_for [ @provider, @chatroom, @message ], remote: true do |f| %>
+          <%= form_for [ @chatroom, @message ], remote: true do |f| %>
             <%= f.text_field :content, as: :text, label: false, placeholder: "Chat with #{@chatroom.provider.name}", autofocus: true %>
             <button type="submit" class="chat-button">
               <i class="fas fa-chevron-circle-right fa-2x"></i>

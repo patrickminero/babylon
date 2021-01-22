@@ -2,10 +2,15 @@
   <div class="row">
     <div class="col-12 col-md-10 col-lg-6 mx-auto my-4">
       <div class="profile-container">
-         <%= link_to edit_user_registration_path(@user), class: 'btn btn-outline-secondary edit-profile-btn' do %>
+          <%= link_to edit_user_registration_path(@user), class: 'btn btn-outline-secondary edit-profile-btn' do %>
             <i class="far fa-edit"></i>
           <% end %>
-        <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+          <% if !@user.photo.nil? %>
+            <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill, gravity: :face %>
+          <% else %>
+            <img src="https://res.cloudinary.com/dliczkabg/image/upload/v1610983854/profile-silhouette_oychwo.jpg" alt="">
+          <% end %> 
+        
         <div class="profile-info">
           <h1><%= @user.username.capitalize %></h1>
           <div>

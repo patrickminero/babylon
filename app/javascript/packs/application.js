@@ -17,3 +17,11 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import "controllers"
+
+
+import { initChatroomCable } from '../channels/chatroom_channel';
+
+document.addEventListener('turbolinks:load', () => {
+    // Call your functions here, e.g:
+    initChatroomCable();
+  });
