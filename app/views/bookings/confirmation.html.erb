@@ -1,0 +1,26 @@
+<div class="container-fuild booking-show-container">
+    <div class="row">
+		<div class="col-12 col-md-10 col-lg-6 m-auto">
+            <div class="booking-show-info-container">
+                <h3>Your booking has been confirmed!</h3>
+                <%= cl_image_tag @booking.provider.photos[0].key, height: 250, width: 250, crop: :fill %>
+                <h2><%= @booking.provider.name %></h2>
+                <h5><i class="fas fa-graduation-cap"></i>  <%= @booking.provider.service_type %></h5>
+                <h5><i class="far fa-calendar"></i> <%= @booking.date.strftime("%a %b %d, %Y") %></h5>
+                <h5><i class="far fa-clock"></i> <%= @booking.time.strftime("%I:%M %p") %></h5>
+                <h5><i class="fas fa-money-bill"></i> €<%= @booking.provider.rate %></h5>
+                <% if @booking.pending %>
+                    <div class="alert alert-danger" role="alert">
+                        Pending booking payment
+                    </div>
+                <% else %>
+                    <div class="alert alert-success" role="alert">
+                        Booking confimed
+                    </div>
+                <% end %>
+                <h5><%= @booking.user.username %> message:</h5>
+                <p><%= @booking.comments %></p>
+            </div>
+        </div>
+    </div>
+</div>

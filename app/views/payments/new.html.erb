@@ -1,0 +1,42 @@
+<div class="container-fluid new-booking-container">
+	<div class="row">
+		<div class="col-12 col-md-10 col-lg-6 m-auto">
+			<div class="new-booking-form-container">
+                <h1>Checkout summary</h1>
+                <div class="card my-3 m-auto" style="max-width: 768px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <%= cl_image_tag @booking.provider.photos[0].key, class:'provider-image', crop: :fill, gravity: :face %>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body shadow-lg index-provider-card-body">
+                                <h5 class="card-title"><%= @booking.provider.name.upcase %></h5>
+                                <p class="card-text fw-bolder"><%= @booking.provider.service_type %></p>
+                                <div class="d-flex justify-content-start flex-wrap">
+                                    <% @booking.provider.languages_spoken.each do |language| %>
+                                        <h5><span class="badge bg-secondary me-3 fw-normal"><%= language %></span></h5>
+                                    <% end %>
+                                </div>
+                                <p>Date: <%= @booking.date.strftime("%a %b %d, %Y") %>.</p>
+                                <p>Time: <%= @booking.time.strftime("%I:%M %p") %></p>
+                                <p>Where: <%= @booking.provider.location %></p>
+                                <p class="card-text"><small class="text-muted">Rate: €<%= @booking.provider.rate %></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="pay" class="btn btn-secondary w-25 m-auto">Pay</button>
+                <script src="https://js.stripe.com/v3/"></script>
+                <script>
+                    const paymentButton = document.getElementById('pay');
+                    paymentButton.addEventListener('click', () => {
+                    const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+                    stripe.redirectToCheckout({
+                        sessionId: '<%= @booking.checkout_session_id %>'
+                    });
+                    });
+                </script>
+			</div>
+		</div>
+	</div>
+</div>

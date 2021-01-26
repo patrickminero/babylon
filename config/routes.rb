@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get '/categories', to: 'pages#categories'
   get 'profile/:id', to: 'users#show'
   resources :providers do
-    resources :bookings
+    get 'provider/:id/bookings/:id/confirmation',as: 'booking_confirmation', to: 'bookings#confirmation'
+    resources :bookings do
+      resources :payments, only: :new
+    end
     resources :reviews, only: :create
   end
   resources :chatrooms, only: [:new, :create, :show, :index] do 

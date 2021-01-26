@@ -2,12 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @media only screen and (min-width: 300px){
-    .booking-show-container{
+    .booking-show-container, .new-booking-container{
         background-color: rgba(0, 0, 0, 0.8);
         min-height: 100vh;
         padding-top: 56px;
     }
-    .booking-show-info-container{
+    .booking-show-info-container, .new-booking-form-container{
         background-color: rgba(255, 255, 255, 0.9);
         width: 95%;
         margin: auto;
@@ -18,5 +18,18 @@
         border-radius: 50%;
         display: block;
         margin: auto;
+    }
+    .new-booking-form-container img{
+        height: 200px;
+    }
+    .bookings-provider-image{
+        height: 240px;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+@media only screen and (min-width: 300px){
+    .new-booking-form-container img{
+        height: 100%;
     }
 }

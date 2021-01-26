@@ -1,0 +1,24 @@
+<div class="container-fluid new-booking-container">
+	<div class="row">
+		<div class="col-12 col-md-10 col-lg-6 m-auto">
+			<div class="new-booking-form-container">
+                <h3>Hire <%= @provider.name %></h3>
+				<%= form_for([@provider, @booking]) do |f| %>
+					<div class="field">
+						<%= f.label :time %>
+						<%= f.time_field :time, class: 'input-background' %>
+					</div>
+					<div class="field">
+						<%= f.label :date %>
+						<%= f.date_field :date, class: 'input-background' %>
+					</div>
+						<div class="field">
+						<%= f.label :comments %>
+						<%= f.text_area :comments, class: 'input-background' %>
+					</div>				
+					<%= f.submit "Confirm booking", class: 'btn btn-secondary mt-3' %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

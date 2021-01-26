@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
+  def new
+    @booking = Booking.new
+    @provider = Provider.find(params[:provider_id])
+  end
   def show
-      @booking = Booking.find(params[:id])
+    @booking = current_user.bookings.find(params[:id])
   end
 
   def create
@@ -8,17 +12,34 @@ class BookingsController < ApplicationController
     @provider = Provider.find(params[:provider_id])
     @booking.provider = @provider
     @booking.user = current_user
-    if @booking.save
-      redirect_to provider_booking_path(@provider, @booking.id)
-    else
-        redirect_to provider_path(@provider)
-    end
-    # authorize @booking
+    @booking.save!
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: @booking.provider.name,
+        amount: @booking.provider.rate.to_i * 100,
+        currency: 'eur',
+        quantity: 1
+      }],
+      success_url:  provider_booking_confirmation_url(@provider, @booking),
+      cancel_url: provider_url(@booking.provider)
+    )
+    
+    @booking.update(checkout_session_id: session.id)
+    redirect_to new_provider_booking_payment_path(@provider, @booking)
+  end
+
+  def cancel_booking
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to root_path
   end
 
   def confirmation
     @booking = Booking.find(params[:id])
     @provider = @booking.provider
+    @booking.pending = false
+    @booking.save!
     # @match = Match.find(session[:match_id])
     # authorize @booking
   end
@@ -26,6 +47,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:date, :time, :user, :provider_id)
+    params.require(:booking).permit(:date, :time, :user, :provider_id, :comments)
   end
 end
