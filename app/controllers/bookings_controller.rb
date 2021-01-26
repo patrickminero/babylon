@@ -29,19 +29,18 @@ class BookingsController < ApplicationController
     redirect_to new_provider_booking_payment_path(@provider, @booking)
   end
 
-  def cancel_booking
+  def destroy
     @booking = Booking.find(params[:id])
+    @user = User.find(@booking.user_id)
     @booking.destroy
-    redirect_to root_path
+    redirect_to profile_path(@user)
   end
 
   def confirmation
     @booking = Booking.find(params[:id])
-    @provider = @booking.provider
     @booking.pending = false
     @booking.save!
-    # @match = Match.find(session[:match_id])
-    # authorize @booking
+    redirect_to profile_path(@booking.user_id)
   end
 
   private
