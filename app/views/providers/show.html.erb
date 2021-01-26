@@ -25,7 +25,8 @@
                     <div>
                         <h6>
                         <i class="fas fa-language"></i>
-                        <% @provider.languages_spoken.each do |language| %>
+                        <% languages = @provider.languages.split(', ') %>
+                        <% languages.each do |language| %>
                             <%= language %>
                         <% end %>
                         </h6>

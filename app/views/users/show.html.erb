@@ -5,7 +5,7 @@
           <%= link_to edit_user_registration_path(@user), class: 'btn btn-outline-secondary edit-profile-btn' do %>
             <i class="far fa-edit"></i>
           <% end %>
-          <% if !@user.photo.nil? %>
+          <% if !@user.photo.attachment.nil? %>
             <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill, gravity: :face %>
           <% else %>
             <img src="https://res.cloudinary.com/dliczkabg/image/upload/v1610983854/profile-silhouette_oychwo.jpg" alt="">
@@ -78,7 +78,7 @@
               <% end %>
             </div>
             <div class="tab-pane fade" id="nav-request" role="tabpanel" aria-labelledby="nav-request-tab">
-              <% if !@requests.empty? %>
+              <% if !@requests.empty? || @requests.nil? %>
                 <% @requests.each do |booking| %>
                   <div class="card mb-3 m-auto" style="max-width: 540px;">
                     <div class="row g-0">

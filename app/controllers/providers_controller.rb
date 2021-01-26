@@ -37,8 +37,7 @@ class ProvidersController < ApplicationController
 	end
 
 	private
-
 	def providers_params
-		params.require(:provider).permit(:name, :description, :location, :rate, :languages_spoken, :service_type, photos: [])
+		params.require(:provider).permit(:name, :description, :location, :rate, :service_type, :languages, photos: [])
 	end
 end
