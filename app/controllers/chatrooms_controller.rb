@@ -13,6 +13,11 @@ class ChatroomsController < ApplicationController
             redirect_to chatroom_path(@chatroom)
         end
     end
+    def index
+        @provider = Provider.find_by(user_id: current_user.id)
+        @provider_chats = Chatroom.where(user_id: current_user.id)
+        @user_chats = Chatroom.where(provider_id: @provider.id)
+    end
 
     def show
         @chatroom = Chatroom.find(params[:id])

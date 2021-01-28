@@ -17,7 +17,8 @@
                                 <h5 class="card-title"><%= provider.name.upcase %></h5>
                                 <p class="card-text fw-bolder"><%= provider.service_type %></p>
                                 <div class="d-flex justify-content-start flex-wrap">
-                                    <% provider.languages_spoken.each do |language| %>
+                                <% languages = provider.languages.split(', ') %>
+                                    <% languages.each do |language| %>
                                         <h5><span class="badge bg-secondary me-3 fw-normal"><%= language %></span></h5>
                                     <% end %>
                                 </div>
