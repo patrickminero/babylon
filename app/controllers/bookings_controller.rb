@@ -1,4 +1,12 @@
 class BookingsController < ApplicationController
+  def index
+    @bookings = Booking.where(user_id: current_user.id)
+    provider = Provider.find_by(user_id: current_user.id)
+    @requests = Booking.count > 0 ? Booking.where(provider_id: provider.id) : []
+    
+    # @requests = Booking.count > 0 ? Booking.where(provider_id: @provider.id) : []
+  end
+
   def new
     @booking = Booking.new
     @provider = Provider.find(params[:provider_id])
@@ -40,7 +48,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.pending = false
     @booking.save!
-    redirect_to profile_path(@booking.user_id)
+    redirect_to provider_bookings_path(@booking.provider)
   end
 
   private

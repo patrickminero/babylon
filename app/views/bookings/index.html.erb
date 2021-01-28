@@ -1,0 +1,89 @@
+<div class="container-fluid booking-index-container">
+    <div class="row pt-5">
+        <div class="col-12 col-md-10 col-lg-6 m-auto pt-5">
+            <% if user_signed_in? %>
+            <div class="profile-action">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-link active w-50 text-secondary" id="nav-bookings-tab" data-bs-toggle="tab" href="#nav-bookings" role="tab" aria-controls="nav-bookings" aria-selected="true">Your bookings</a>
+                    <a class="nav-link w-50 text-secondary" id="nav-request-tab" data-bs-toggle="tab" href="#nav-request" role="tab" aria-controls="nav-request" aria-selected="false">Your requests</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-bookings" role="tabpanel" aria-labelledby="nav-bookings-tab">
+                        <% if !current_user.bookings.empty? %>
+                            <% current_user.bookings.each do |booking| %>
+                            <div class="card mb-3 m-auto" style="max-width: 540px;">
+                                <div class="row g-0">
+                                <div class="col-md-4">
+                                    <%= cl_image_tag booking.provider.photos[0].key, crop: :fill, gravity: :face, class: 'bookings-provider-image' %>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                    <h5 class="card-title"><%= booking.provider.name %></h5>
+                                    <h6 class="card-text"><%= booking.provider.service_type %></h6>
+                                    <p class="card-text mb-0"><i class="fas fa-money-bill-wave"></i> €<%= booking.provider.rate %></p>
+                                    <p class="card-text mb-0"><i class="fas fa-map-pin"></i> <%= booking.provider.location %></p>
+                                    <p class="card-text mb-0"><i class="fas fa-clock"></i> <%= booking.date.strftime("%a %b %d, %Y") %> - <%= booking.time.strftime("%H:%M") %></p>
+                                    <p class="card-text mb-0"><i class="fas fa-language"></i>
+                                        <% languages = booking.provider.languages.split(', ') %>
+                                        <% booking.provider.languages.each do |lan| %>
+                                        <span><%= lan %></span>
+                                        <% end %>
+                                    </p>
+                                    <p class="card-text">Comments: <%= booking.comments %></p>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <% end %>
+                        <% else %>
+                            <h6 class="">You have not book services yet.</h6>
+                        <% end %>
+                        </div>
+                        <div class="tab-pane fade" id="nav-request" role="tabpanel" aria-labelledby="nav-request-tab">
+                        <% if !@requests.empty? || @requests.nil? %>
+                            <% @requests.each do |booking| %>
+                            <div class="card mb-3 m-auto" style="max-width: 540px;">
+                                <div class="row g-0">
+                                <div class="col-md-4">
+                                    <% if !booking.user.photo.attachment.nil? %>
+                                        <%= cl_image_tag booking.user.photo.key, crop: :fill, gravity: :face, class: 'bookings-provider-image' %>
+                                    <% else %>
+                                        <img src="https://res.cloudinary.com/dliczkabg/image/upload/v1610983854/profile-silhouette_oychwo.jpg" alt="" class="bookings-provider-image">
+                                    <% end %>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                    
+                                    <h5 class="card-title mb-0"><%= booking.user.username %></h5>
+                                    <% if booking.pending %>
+                                        <div class="alert alert-warning mb-0" role="alert">
+                                        Pending for approval
+                                        </div>
+                                    <% else %>
+                                        <div class="alert alert-success mb-0" role="alert">
+                                        Booking confirmed
+                                        </div>
+                                    <% end %>
+                                    <p class="card-text mb-0"><i class="fas fa-clock"></i> <%= booking.date.strftime("%a %b %d, %Y") %> - <%= booking.time.strftime("%H:%M") %></p>
+                                    <p class="card-text mb-0">Comments: <%= booking.comments %></p>
+                                    <div>
+                                        <%= link_to "Accept", provider_booking_confirmation_path(booking.provider, booking.id), method: :get, data: { confirm: "Are you sure?" }, class: "btn btn-secondary btn-sm mr-2" %>
+                                        <%= link_to "Reject", provider_booking_path(booking.user, booking.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-secondary btn-sm" %>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <% end %>
+                        <% else %>
+                            <h6 class="">You don't have booking requests yet.</h6>
+                        <% end %>
+                        </div>
+                    </div>
+                    </div>
+                <% end %>
+        </div>
+    </div>
+</div>

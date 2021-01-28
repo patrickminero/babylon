@@ -1,29 +1,56 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="/"><i class="fas fa-user-tie"></i> Babylon</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <% if user_signed_in? %>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <% if !current_user.photo.attachment.nil? %>
+          <%= cl_image_tag current_user.photo.key, height: 300, width: 400, crop: :fill, gravity: :face, width: 40, height: 40, class: 'rounded-circle' %>
+        <% else %>
+          <img src="https://res.cloudinary.com/dliczkabg/image/upload/v1610983854/profile-silhouette_oychwo.jpg" alt="" class="navbar-avatar">
+        <% end %>
+      </button>
+    <% else %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <% end %>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item text-center">
           <a class="nav-link" href="/categories">Book services</a>
         </li>
         <%if  user_signed_in? %>
-        <li class="nav-item text-center">
-          <a class="nav-link" href="/profile/<%= current_user.id %>">Profile</a>
-        </li>
-        <li class="nav-item text-center">
-          <a class="nav-link" href="/chatrooms">Messages</a>
-        </li>
-        <% end %>
-        <li class="nav-item text-center">
-          <% if user_signed_in?%>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <li class="nav-item text-center">
+            <a class="nav-link" href="/profile/<%= current_user.id %>">Profile</a>
+          </li>
+          <li class="nav-item text-center">
+            <a class="nav-link" href="/chatrooms">Messages</a>
+          </li>
+          <% if current_user.provider %>
+          <li class="nav-item text-center">
+            <% provider = Provider.find_by(user_id: current_user.id) %>
+            <%= link_to 'Bookings', provider_bookings_path(provider), class: 'nav-link' %>
+          </li>
           <% else %>
-            <%= link_to "Login | Register", new_user_registration_path, class: "nav-link" %>
+            <li class="nav-item text-center">
+              
+              <% provider = Provider.find_by(user_id: current_user.id) %>
+            <%= link_to 'Bookings', users_bookings_path(current_user.id), class: 'nav-link' %>
+          </li>
           <% end %>
-        </li>
+        <% end %>
+        <% if user_signed_in?%>
+          <li class="nav-item text-center">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item text-center">
+            <%= link_to "Register", new_user_registration_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item text-center">
+            <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

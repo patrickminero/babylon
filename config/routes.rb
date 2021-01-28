@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/categories', to: 'pages#categories'
-  get 'profile/:id', as: 'profile', to: 'users#show'
+  get '/profile/:id', as: 'profile', to: 'users#show'
+  get '/:id/booking', as: 'users_bookings', to: 'users#bookings'
   resources :providers do
     get 'provider/:id/bookings/:id/confirmation',as: 'booking_confirmation', to: 'bookings#confirmation'
     resources :bookings do
