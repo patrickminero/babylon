@@ -26,11 +26,11 @@
           <li class="nav-item text-center">
             <a class="nav-link" href="/chatrooms">Messages</a>
           </li>
-          <% if current_user.provider %>
-          <li class="nav-item text-center">
-            <% provider = Provider.find_by(user_id: current_user.id) %>
-            <%= link_to 'Bookings', provider_bookings_path(provider), class: 'nav-link' %>
-          </li>
+          <% if current_user.provider == true %>
+            <li class="nav-item text-center">
+              <% provider = Provider.find_by(user_id: current_user.id) %>
+              <%= link_to 'Bookings', provider_bookings_path(provider), class: 'nav-link' %>
+            </li>
           <% else %>
             <li class="nav-item text-center">
               
