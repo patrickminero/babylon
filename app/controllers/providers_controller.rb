@@ -1,6 +1,13 @@
 class ProvidersController < ApplicationController
 	def index
 		@providers = Provider.all
+
+		@markers = @providers.geocoded.map do |provider|
+			{
+			  lat: provider.latitude,
+			  lng: provider.longitude
+			}
+		end
 	end
 
 	def show

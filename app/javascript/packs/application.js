@@ -18,6 +18,12 @@ require("channels")
 
 import "controllers"
 
+import 'mapbox-gl/dist/mapbox-gl.css';
+import { initMapbox } from '../plugins/init_mapbox';
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+})
 
 import { initChatroomCable } from '../channels/chatroom_channel';
 
