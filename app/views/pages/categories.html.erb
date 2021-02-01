@@ -1,23 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-md-10 col-lg-6 m-auto pt-5">
-      
+    <div class="col-12 col-md-10 col-lg-6 m-auto pt-3">
       <div class="pt-5">
       <h2>Select a category</h2>
       <% @categories.each do |category| %>
-        <%= link_to  providers_path(category) do %>
+        <%= link_to providers_path(category), class: 'text-decoration-none' do %>
         <% string = category.split(' ').first %>
-          <div class="col-12 lg-6 category-card" style="background-image: url(https://source.unsplash.com/featured/?<%= string %>)">
-            <div class="card-content">
+          <div class="col-12 lg-6 category-card " style="background-image: url(https://source.unsplash.com/featured/?<%= string %>)">
+            <div class="card-content ">
               <h4><%= category %></h4>
             </div>
           </div>
         <% end %>
       <% end %>
-      <%= link_to  all_providers_path do %>
+      <%= link_to  all_providers_path, class: 'text-decoration-none' do %>
           <div class="col-12 lg-6 category-card" style="background-image: url(https://source.unsplash.com/featured/?services)">
             <div class="card-content">
-              <h4>All</h4>
+              <h4>All Categories</h4>
             </div>
           </div>
         <% end %>

@@ -1,0 +1,19 @@
+<%= link_to provider_path(provider), class: 'text-decoration-none text-secondary' do %>
+  <%= cl_image_tag( provider.photos.first.key, :width => '100%', :height => 100, gravity: 'face') %>
+  <div class="provider-card-infos py-1 px-2">
+      <h2 class="mt-2 mb-0"><%= provider.name  %></h2>
+      <%# <!--<p><%= bar.distance_to([session[:latitude].to_f, session[:longitude].to_f]).ceil(2) km away</p>%> 
+      <p class="mb-0"><%= provider.service_type %></p>
+      <div class="d-flex align-items-center justify-content-between">
+        
+        <% if provider.rating == 0 %>
+            <p class="mb-0">Not rated yet</p>
+        <% else %>
+            <p class="mb-0"><% provider.rating.times do %><i class="fas fa-star text-secondary"></i><% end %> <%= pluralize provider.reviews.size, "review" %></p>
+        <% end %>
+        
+        <p class="mb-0"><%= number_to_currency(provider.rate, unit: '€') %></p>
+      </div>
+    </div>
+  </div>
+<% end %>

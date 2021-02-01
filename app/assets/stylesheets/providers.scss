@@ -48,6 +48,32 @@
         opacity: 0;
         display: none;
     }
+    .mapboxgl-popup {
+        width: 300px;
+        border: none;
+        outline: none;
+        padding: 0;
+      }
+      
+      .mapboxgl-popup-content {
+        padding: 0 !important;
+        color: black;
+        border-radius: 10px !important;
+      
+        p {
+        margin: 0;
+        }
+      
+        h2 {
+          font-size: 20px !important;
+        }
+      
+        img {
+          border-top-left-radius: 10px !important;
+          border-top-right-radius: 10px !important;
+          object-fit: cover;
+        }
+      }
     .collage-container{
         display: none;
     }
