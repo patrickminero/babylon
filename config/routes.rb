@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/categories', to: 'pages#categories'
   get '/profile/:id', as: 'profile', to: 'users#show'
   get '/:id/booking', as: 'users_bookings', to: 'users#bookings'
+  get '/providers/all', as: 'all_providers', to: 'providers#all' 
   resources :providers do
     get 'provider/:id/bookings/:id/confirmation',as: 'booking_confirmation', to: 'bookings#confirmation'
     resources :bookings do

@@ -1,5 +1,16 @@
 class ProvidersController < ApplicationController
 	def index
+		@providers = Provider.where(service_type: params[:format])
+
+		@markers = @providers.geocoded.map do |provider|
+			{
+			  lat: provider.latitude,
+			  lng: provider.longitude
+			}
+		end
+	end
+
+	def all
 		@providers = Provider.all
 
 		@markers = @providers.geocoded.map do |provider|

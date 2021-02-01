@@ -5,22 +5,22 @@
       <div class="pt-5">
       <h2>Select a category</h2>
       <% @categories.each do |category| %>
-        <a href="/products/<%= category %>" class="text-decoration-none">
+        <%= link_to  providers_path(category) do %>
         <% string = category.split(' ').first %>
           <div class="col-12 lg-6 category-card" style="background-image: url(https://source.unsplash.com/featured/?<%= string %>)">
             <div class="card-content">
               <h4><%= category %></h4>
             </div>
           </div>
-        </a>
+        <% end %>
       <% end %>
-      <a href="/providers" class="text-decoration-none">
-          <div class="col-12 lg-6 category-card" style="background-image: url(https://loremflickr.com/320/240/services)">
+      <%= link_to  all_providers_path do %>
+          <div class="col-12 lg-6 category-card" style="background-image: url(https://source.unsplash.com/featured/?services)">
             <div class="card-content">
               <h4>All</h4>
             </div>
           </div>
-        </a>
+        <% end %>
       </div>
     </div>
   </div>
