@@ -1,12 +1,13 @@
-<% categories = ['Medical', 'Legal', 'Home-improvement', 'Translation', 'Accounting', 'Housing', 'Well-being'] %>
-
 <div class="container">
   <div class="row">
-    <div class="col-12">
-      <div class="">
-      <% categories.each do |category| %>
+    <div class="col-12 col-md-10 col-lg-6 m-auto pt-5">
+      
+      <div class="pt-5">
+      <h2>Select a category</h2>
+      <% @categories.each do |category| %>
         <a href="/products/<%= category %>" class="text-decoration-none">
-          <div class="col-12 lg-6 category-card" style="background-image: url(https://source.unsplash.com/featured/?<%= category %>)">
+        <% string = category.split(' ').first %>
+          <div class="col-12 lg-6 category-card" style="background-image: url(https://source.unsplash.com/featured/?<%= string %>)">
             <div class="card-content">
               <h4><%= category %></h4>
             </div>
@@ -14,7 +15,7 @@
         </a>
       <% end %>
       <a href="/providers" class="text-decoration-none">
-          <div class="col-12 lg-6 category-card" style="background-image: url(https://loremflickr.com/320/240/meeting)">
+          <div class="col-12 lg-6 category-card" style="background-image: url(https://loremflickr.com/320/240/services)">
             <div class="card-content">
               <h4>All</h4>
             </div>

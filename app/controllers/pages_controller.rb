@@ -4,5 +4,10 @@ class PagesController < ApplicationController
     end
 
     def categories
+        @categories = []
+        
+        Provider.all.each do |provider|
+            @categories << provider.service_type
+        end
     end
 end
