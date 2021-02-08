@@ -1,7 +1,9 @@
 <div class="message-container" id="message-<%= message.id %>">
-  <i class="author">
-    <span><%= message.user.username %></span>
-    <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-  </i>
-  <p><%= message.content %></p>
+  <div class="chat-bubble mb-3 <%=  message.user == current_user ? "message-author" : "message-recipient" %>">
+    <i class="author">
+      <span><%= message.user.username %></span>
+      <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+    </i>
+    <p><%= message.content %></p>
+  </div>
 </div>

@@ -7,18 +7,54 @@
         height: 100vh;
         overflow: hidden;
         padding: 0;
+        position: relative;
+    }
+    .inner-container{
+        position: relative;
+        height: 100vh;
     }
     .chat-info-container{
         background-color: rgba(255, 255, 255, 0.8);
-        height: 100vh;
+        height: 89vh;
         overflow: scroll;
         width: 100%;
+        padding: 50px 16px;
+    }
+    .message-container{
+        width: 100%;
+    }
+    
+    .message-author{
+        width: 65%;
+        float: right;
+        text-align: right;
+
+    }
+    .message-recipient{
+        width: 65%;
+        float: left;
+        text-align: left
+    }
+    .chat-bubble{
+        background-color: rgba(0, 0, 0, 0.8);
+        color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .chat-form-wrapper{
+        width: 100%;
+        height: 5vh;
         position: relative;
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        padding: 0 12px;
     }
     .chat-form{
-        position: absolute;
-        bottom: 0;
+        
         width: 100%;
+        // border-radius: 5px;
         background-color: white;
     }
 
@@ -31,8 +67,8 @@
         display: inline;
         border: none;
         outline: none;
-        padding-left: 5px;
-        padding-bottom: 5px;
+        padding: 10px;
+        // padding-bottom: 5px;
         font-size: 20px;
         background-color: transparent;
     }
@@ -40,7 +76,7 @@
         height: 50px;
         border: none;
         outline: none;
-        transform: translateY(4px);
+        // transform: translateY(px);        
         background-color: transparent;
         width: 18%;
     }
