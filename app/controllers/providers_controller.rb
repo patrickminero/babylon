@@ -33,6 +33,7 @@ class ProvidersController < ApplicationController
 
 	def new
 		@provider = Provider.new
+		authorize @provider
 	end
 
 	def create
@@ -45,6 +46,7 @@ class ProvidersController < ApplicationController
 		else
 			render :new
 		end
+		authorize @provider
 	end
 
 	def edit

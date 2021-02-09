@@ -8,6 +8,7 @@ class UsersController < ApplicationController
         else
             @requests = Booking.count > 0 ? Booking.where(provider_id: @provider.id) : []
         end
+        authorize @user
     end
 
     def bookings

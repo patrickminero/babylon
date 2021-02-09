@@ -10,6 +10,7 @@ class Provider < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :chatrooms, dependent: :destroy
   validates :name, :service_type, :rate, :location, :description, :languages, presence: true
+  validates :name, uniqueness: true
 
   def rating
     return 0 if self.reviews.empty?
