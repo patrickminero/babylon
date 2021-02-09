@@ -15,7 +15,6 @@ export default class extends Controller {
             (position) => {
               const lat = position.coords.latitude
               const lng = position.coords.longitude
-  
               this.latitudeInputTarget.value = lat
               this.longitudeInputTarget.value = lng
             },

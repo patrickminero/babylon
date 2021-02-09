@@ -1,8 +1,8 @@
 class ProvidersController < ApplicationController
 	skip_before_action :authenticate_user!, only: [:index, :all]
 	def index
-		@providers = policy_scope(Provider).where(service_type: params[:format])
 
+		@providers = policy_scope(Provider).where(service_type: params[:format]) #.near([session[:latitude], session[:longitude]], 30)
 		@markers = @providers.geocoded.map do |provider|
 			{
 			  lat: provider.latitude,
@@ -13,7 +13,7 @@ class ProvidersController < ApplicationController
 	end
 
 	def all
-		@providers = policy_scope(Provider).all
+		@providers = policy_scope(Provider).all #.near([session[:latitude], session[:longitude]], 30)
 
 		@markers = @providers.geocoded.map do |provider|
 			{
