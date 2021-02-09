@@ -1,6 +1,7 @@
 class ProvidersController < ApplicationController
+	skip_before_action :authenticate_user!, only: [:index, :all]
 	def index
-		@providers = Provider.where(service_type: params[:format])
+		@providers = policy_scope(Provider).where(service_type: params[:format])
 
 		@markers = @providers.geocoded.map do |provider|
 			{
@@ -12,7 +13,7 @@ class ProvidersController < ApplicationController
 	end
 
 	def all
-		@providers = Provider.all
+		@providers = policy_scope(Provider).all
 
 		@markers = @providers.geocoded.map do |provider|
 			{
@@ -27,7 +28,7 @@ class ProvidersController < ApplicationController
 		@provider = Provider.find(params[:id])
 		@booking = Booking.new
 		@review = Review.new
-		# @chatroom  = Chatroom.create(provider: @provider, user: current_user)
+		authorize @provider
 	end
 
 	def new
