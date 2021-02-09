@@ -6,11 +6,11 @@
 				<%= form_for([@provider, @booking]) do |f| %>
 					<div class="field">
 						<%= f.label :time %>
-						<%= f.time_field :time, class: 'input-background' %>
+						<%= f.time_field :time, class: 'input-background',  value: "%H:%M", min: '08:00:00', max: '16:00:00' %>
 					</div>
 					<div class="field">
 						<%= f.label :date %>
-						<%= f.date_field :date, class: 'input-background' %>
+						<%= f.date_field :date, class: 'input-background', min: Date.current, max: 1.month.from_now %>
 					</div>
 						<div class="field">
 						<%= f.label :comments %>
