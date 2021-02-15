@@ -7,7 +7,7 @@ export default class extends Controller {
 
   connect() {
     try {
-      
+      console.log('connected')
       if (window.navigator.geolocation) {
         window.navigator.geolocation
           .getCurrentPosition(

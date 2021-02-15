@@ -25,6 +25,20 @@
     .carousel-container{
         padding-top: 56px;
     }
+    .search-form-control {
+    position: relative;
+    }
+    
+    .search-form-control .form-control {
+    height: 2.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    border: 1px solid #E7E7E7;
+    }
+    
+    .form-control {
+    padding: 0rem 0.3rem;
+    }
+    
     .toggle-button-container{
         margin-top: 5em;
     }
@@ -119,7 +133,7 @@
     }
 }
 @media only screen and (min-width: 993px){
-    #toggleButton{
+    .toggle-button-container{
         display: none;
     }
     #map{
