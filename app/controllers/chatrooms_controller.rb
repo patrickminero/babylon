@@ -15,8 +15,11 @@ class ChatroomsController < ApplicationController
     end
     def index
         @provider = Provider.find_by(user_id: current_user.id)
-        @provider_chats = Chatroom.where(user_id: current_user.id)
-        @user_chats = current_user.provider ?  Chatroom.where(provider_id: @provider.id) : []
+        @provider_chats = policy_scope(Chatroom).where(user_id: current_user.id)
+        @user_chats = current_user.provider ?  policy_scope(Chatroom).where(provider_id: @provider.id) : []
+        
+        authorize @provider_chats
+        authorize @user_chats
     end
 
     def show
