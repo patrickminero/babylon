@@ -1,10 +1,16 @@
 class Provider < ApplicationRecord
+
   include PgSearch::Model
-  pg_search_scope :search_by_name_and_service_type,
-    against: [ :name, :service_type ],
+
+  pg_search_scope :global_search,
+    against: [ :service_type, :name ],
+  #   associated_against: {
+  #     users: [ :username, :service_type ]
+  # },
     using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
-    }
+      tsearch: { prefix: true }
+  }
+
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
